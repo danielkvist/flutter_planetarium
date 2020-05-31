@@ -5,7 +5,7 @@ import 'package:planetarium/utils/planets.dart';
 class PlanetSlide extends StatelessWidget {
   final int planet;
   final bool infoShowing;
-  final Function() onPressCallback;
+  final VoidCallback onPressCallback;
 
   PlanetSlide({
     @required this.planet,
