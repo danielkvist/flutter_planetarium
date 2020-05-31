@@ -11,6 +11,8 @@ class PlanetInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var planet = planets[(currentPlanet + 0.5).toInt()];
+
     return Container(
       height: 250,
       width: 300,
@@ -23,42 +25,50 @@ class PlanetInfoCard extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              planetsInfo[planets[(currentPlanet + 0.5).toInt()]]
-                  ['description'],
+              planetsInfo[planet]['description'],
               textAlign: TextAlign.justify,
             ),
             SizedBox(
               height: 15,
             ),
-            Row(
-              children: <Widget>[
-                Icon(Icons.place),
-                Text(
-                  " ${planetsInfo[planets[(currentPlanet + 0.5).toInt()]]['distance']} away.",
-                ),
-              ],
+            Visibility(
+              visible: planetsInfo[planet]['distance'] != '',
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.place),
+                  Text(
+                    " ${planetsInfo[planet]['distance']} away.",
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 7.5,
             ),
-            Row(
-              children: <Widget>[
-                Icon(Icons.access_time),
-                Text(
-                  " A day is ${planetsInfo[planets[(currentPlanet + 0.5).toInt()]]['day']}.",
-                ),
-              ],
+            Visibility(
+              visible: planetsInfo[planet]['day'] != '',
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.access_time),
+                  Text(
+                    " A day is ${planetsInfo[planet]['day']}.",
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 7.5,
             ),
-            Row(
-              children: <Widget>[
-                Icon(Icons.calendar_today),
-                Text(
-                  " A year is ${planetsInfo[planets[(currentPlanet + 0.5).toInt()]]['year']}.",
-                ),
-              ],
+            Visibility(
+              visible: planetsInfo[planet]['year'] != '',
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.calendar_today),
+                  Text(
+                    " A year is ${planetsInfo[planet]['year']}.",
+                  ),
+                ],
+              ),
             ),
           ],
         ),

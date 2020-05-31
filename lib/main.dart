@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_splash/flutter_splash.dart';
 import 'package:planetarium/utils/planets.dart';
 import 'package:planetarium/widgets/planet_card.dart';
 import 'package:planetarium/widgets/planet_info_card.dart';
@@ -26,9 +27,22 @@ class App extends StatelessWidget {
         brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SafeArea(
-        child: Scaffold(
-          body: Planetarium(),
+      home: Splash(
+        seconds: 1,
+        title: Text(
+          '\n\nPlanetarium',
+          style: TextStyle(
+            fontSize: 42.0,
+            fontWeight: FontWeight.w300,
+          ),
+        ),
+        imageBackground: Image.asset('assets/images/earth.jpg').image,
+        backgroundColor: Colors.black,
+        loaderColor: Colors.white,
+        navigateAfterSeconds: SafeArea(
+          child: Scaffold(
+            body: Planetarium(),
+          ),
         ),
       ),
     );
@@ -42,9 +56,9 @@ class Planetarium extends StatefulWidget {
 
 class _PlanetariumState extends State<Planetarium> {
   final PageController _planetController =
-      PageController(viewportFraction: 0.5);
-  final PageController _planetPageController = PageController();
-  double currentPlanet = 0.0;
+      PageController(viewportFraction: 0.5, initialPage: 3);
+  final PageController _planetPageController = PageController(initialPage: 3);
+  double currentPlanet = 3;
   bool showPlanetInfo = false;
 
   @override
@@ -84,7 +98,7 @@ class _PlanetariumState extends State<Planetarium> {
           PageView.builder(
             controller: _planetPageController,
             scrollDirection: Axis.horizontal,
-            itemCount: 8,
+            itemCount: planets.length,
             itemBuilder: (context, index) {
               return PlanetSlide(
                 planet: index,
@@ -112,7 +126,7 @@ class _PlanetariumState extends State<Planetarium> {
               child: PageView.builder(
                 controller: _planetController,
                 scrollDirection: Axis.horizontal,
-                itemCount: 8,
+                itemCount: planets.length,
                 itemBuilder: (context, index) {
                   return PlanetCard(
                     currentIndex: index,

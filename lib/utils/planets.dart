@@ -1,4 +1,5 @@
 const List<String> planets = [
+  'sun',
   'mercury',
   'venus',
   'earth',
@@ -6,10 +7,21 @@ const List<String> planets = [
   'jupiter',
   'saturn',
   'uranus',
-  'neptune'
+  'neptune',
 ];
 
 const Map<String, Map> planetsInfo = {
+  'sun': {
+    'description':
+        'The Sun is a yellow dwarf star, a hot ball of glowing gases at the heart of our solar system. Its gravity holds the solar system together, keeping everything in its orbit.',
+    'distance': '149,6 million kilometers',
+    'volume': '1,300,000 Earths',
+    'mass': '333,000 Earths',
+    'day': '',
+    'year': '',
+    'wikipedia': 'https://en.wikipedia.org/wiki/Sun',
+    'nasa': 'https://solarsystem.nasa.gov/solar-system/sun/overview/',
+  },
   'mercury': {
     'description':
         'Mercury is the smallest planet in our solar system. It’s just a little bigger than Earth’s moon. It is the closest planet to the sun, but it’s actually not the hottest. Venus is hotter.',
@@ -35,7 +47,7 @@ const Map<String, Map> planetsInfo = {
   'earth': {
     'description':
         'Our home planet Earth is a rocky, terrestrial planet. It has a solid and active surface with mountains, valleys, canyons, plains and so much more. Earth is special because it is an ocean planet. Water covers 70% of Earth\'s surface.',
-    'distance': '0 kilometers',
+    'distance': '',
     'volume': '1,083,206,916,846km³', //earths
     'mass': '5,972,190,000,000,000,000,000,000kg', // earths
     'day': '24 hours', // days
